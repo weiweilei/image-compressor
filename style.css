@@ -1,0 +1,274 @@
+/* 全局样式和变量定义 */
+:root {
+    --primary-color: #007AFF;       /* 苹果风格主色调 */
+    --background-color: #F5F5F7;    /* 背景色 */
+    --text-color: #1D1D1F;         /* 主要文字颜色 */
+    --secondary-text: #86868B;      /* 次要文字颜色 */
+    --border-radius: 12px;          /* 统一圆角 */
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* 阴影效果 */
+}
+
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基础样式 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 主容器样式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 头部样式 */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), #5856D6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+}
+
+/* 上传区域样式 */
+.upload-area {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 2px dashed #DEDEDE;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(0, 122, 255, 0.02);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    fill: var(--primary-color);
+}
+
+.upload-hint {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+/* 预览区域样式 */
+.preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.preview-box {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.preview-box h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.image-container {
+    width: 100%;
+    height: 300px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.image-info {
+    margin-top: 1rem;
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 压缩控制区域样式 */
+.compression-controls {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.quality-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 滑块样式 */
+input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    background: #DEDEDE;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 122, 255, 0.2);
+    transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* 下载按钮样式 */
+.download-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: 500;
+}
+
+.download-btn:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+/* 页脚样式 */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .preview-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .quality-control {
+        flex-direction: column;
+        align-items: stretch;
+    }
+} 
+
+/* 添加加载提示样式 */
+.loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    z-index: 1000;
+} 
+
+/* 目标大小控制样式 */
+.size-control {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.size-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.size-input-group input[type="number"] {
+    width: 100px;
+    padding: 0.5rem;
+    border: 1px solid #DEDEDE;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.size-input-group select {
+    padding: 0.5rem;
+    border: 1px solid #DEDEDE;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: white;
+}
+
+.size-input-group input[type="number"]:focus,
+.size-input-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+} 
